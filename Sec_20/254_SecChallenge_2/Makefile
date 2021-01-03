@@ -1,0 +1,20 @@
+CPPFLAGS=-Wall -Werror -std=c++14
+
+#Sources and include files
+SOURCES= main.cpp
+
+INCLUDES = -I./  # Should specify the directory of the header files
+
+# Creating object file variable
+OBJS = $(SOURCES:.cpp=.o)
+
+PROGRAM= SongList
+
+$(PROGRAM): $(OBJS)
+	g++ $(CPPFLAGS) -o $@ $(OBJS)
+
+%.o: %.cpp 
+	g++ -c $(CPPFLAGS) $(INCLUDES)  $<
+
+clean:
+	rm -f $(OBJS) $(PROGRAM) *~
